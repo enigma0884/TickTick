@@ -16,7 +16,6 @@ const Noteitem = (props) => {
                 <i className="far fa-edit mx-2" onClick={() => props.updateNote(props.note)}></i>
             </div>
         </div>
-
     )
 }
 

@@ -82,12 +82,12 @@ const Notes = (props) => {
             </div>
 
             <div className="row">
-                <h1 className="my-3">Your notes</h1>
+                <h1 className="my-3">Your Notes</h1>
                 <div className="container">
                     {notes.length ? notes.map(note => {
                         return <Noteitem updateNote={updateNote} note={note} key={note._id} />
 
-                    }) : "There are no notes to display, create one to get started"}
+                    }) : <p className='customName'>There are no notes to display, create one to get started.</p>}
                 </div>
             </div>
         </>

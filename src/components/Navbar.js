@@ -1,12 +1,16 @@
+import { useContext } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
+import NoteContext from '../context/notes/NoteContext';
 
 const NavBar = () => {
 
     let location = useLocation()
     const history = useHistory()
+    const { setusername, username } = useContext(NoteContext)
 
     const handleLogout = () => {
         localStorage.removeItem('authToken')
+        setusername("")
         history.push('/login')
     }
 
@@ -14,7 +18,7 @@ const NavBar = () => {
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <img height={50} width={50} src="/nav-logo.svg" alt="" id='customLogo' />
+                <img height={50} width={50} src="/logo.svg" alt="" id='customLogo' />
                 <Link className="navbar-brand name" to="/">TickTick</Link >
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -27,6 +31,10 @@ const NavBar = () => {
                         <li className="nav-item customName">
                             <Link className={`nav-link ${location.pathname === '/about' ? `active` : ""}`} aria-current="page" to="/about">About</Link>
                         </li>
+                        {username &&
+                            <li className='nav-item customMargin navName'>
+                                <Link className="nav-link" aria-current="page" to="/">{username}</Link>
+                            </li>}
                     </ul>
                     {!localStorage.getItem('authToken') ? <form className="d-flex">
                         <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>

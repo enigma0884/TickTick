@@ -22,9 +22,40 @@ i {
 
 .customName {
     font-size: large;
+    font-weight: 500;
 }
 
 .name {
     font-size: x-large;
+    font-weight: 500;
+}
+
+body {
+    background-color: slategray;
+}
+
+nav {
+    padding-bottom: 12px;
+}
+
+.navLink {
+    color: white;
+}
+
+.bg-image {
+    background-image: url('./assets/homeimage.jpg');
+    height: 100vh;
+}
+
+.customLabel {
+    font-size: large;
+    font-weight: 400;
+}
+
+.customMargin {
+    margin-left: 57em;
+}
+
+.navName {
     font-weight: 500;
 }

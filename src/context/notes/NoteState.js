@@ -5,6 +5,7 @@ const NoteState = (props) => {
 
     const host = "http://localhost:5000"
     const [notes, setNotes] = useState([])
+    const [username, setusername] = useState("")
 
     // Get notes
     const getNotes = async () => {
@@ -21,7 +22,7 @@ const NoteState = (props) => {
             setNotes(json)
         }
     }
-    
+
     // Add a note
     const addNote = async (title, description, tag) => {
 
@@ -75,7 +76,7 @@ const NoteState = (props) => {
     }
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+        <NoteContext.Provider value={{ notes, username, setusername, addNote, deleteNote, editNote, getNotes }}>
             {props.children}
         </NoteContext.Provider>
     )

@@ -47,7 +47,7 @@ router.post(
             }
 
             const authToken = jwt.sign(data, JWT_SECRET)
-            return res.json({ authToken })
+            return res.json({ authToken, username: user.name })
 
         } catch (error) {
 
@@ -90,7 +90,7 @@ router.post(
                 }
             }
             const authToken = jwt.sign(data, JWT_SECRET)
-            res.json({ authToken })
+            res.json({ authToken, username: user.name })
 
         } catch (error) {
 

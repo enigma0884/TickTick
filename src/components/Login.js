@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import NoteContext from '../context/notes/NoteContext'
 
 const Login = (props) => {
 
     const [authCreds, setauthCreds] = useState({ email: "", password: "" })
     const history = useHistory()
+    const { setusername } = useContext(NoteContext)
 
     const handleOnChange = (event) => {
         setauthCreds({
@@ -30,6 +32,7 @@ const Login = (props) => {
         if (json.authToken) {
             // redirect
             localStorage.setItem('authToken', json.authToken)
+            setusername(json.username)
             history.push('/')
         }
         else {
@@ -42,11 +45,11 @@ const Login = (props) => {
             <h1>Login</h1>
             <form className="my-3" onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                    <label htmlFor="exampleInputEmail1" className="form-label customLabel">Email</label>
                     <input onChange={handleOnChange} value={authCreds.email} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <label htmlFor="exampleInputPassword1" className="form-label customLabel">Password</label>
                     <input onChange={handleOnChange} value={authCreds.password} type="password" className="form-control" id="exampleInputPassword1" />
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
