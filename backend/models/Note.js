@@ -20,6 +20,7 @@ const noteSchema = new mongoose.Schema({
 
     tag: {
         type: String,
+        required: true,
         default: 'General'
     },
 
